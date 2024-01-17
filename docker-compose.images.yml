@@ -39,6 +39,10 @@ services:
 
   redis:
     image: redis:alpine
+    ports:
+      - "6379:6379"
+    expose:
+      - "6379"
     volumes:
       - "./healthchecks:/healthchecks"
     healthcheck:
@@ -58,6 +62,10 @@ services:
     healthcheck:
       test: /healthchecks/postgres.sh
       interval: "5s"
+    ports:
+      - "5432:5432"
+    expose:
+      - "5432"
     networks:
       - back-tier
 
